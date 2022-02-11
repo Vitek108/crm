@@ -2,7 +2,13 @@
 
 A simple web application that enables customer relationship management.
 
-<b>Technologies:</b> Python, Django, SQlite, HTML, TailWindCSS, Git
+## The app is built with:
+* Python
+* Django
+* SQlite
+* HTML
+* TailWindCSS
+* Git
 
 ## Printscreen of application
 
