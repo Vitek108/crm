@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.db.models.signals import post_save
 
 
 class User(AbstractUser):
@@ -29,3 +30,13 @@ class Agent(models.Model):
 
     def __str__(self):
         return self.user.email
+
+
+# SIGNAL:
+def post_user_crated_signal(sender, instance, created, **kwargs): # instance = prvek modelu, který byl uložen,
+    # created = říká, zda byla instance nově vytvořena či ne (true/false)
+    if created:
+        UserProfile.objects.create(user=instance)
+
+
+post_save.connect(post_user_crated_signal, sender=User) # connect bere jméno volané funkce a sender = model, který posílá událost
